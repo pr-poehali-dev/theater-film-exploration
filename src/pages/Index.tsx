@@ -90,6 +90,16 @@ const courses = [
 const blogPosts = [
   {
     id: 1,
+    title: 'Театр и кино как виды искусства',
+    excerpt: 'Полный разбор целей, функций и особенностей театральных постановок и кино для обществознания',
+    date: '11 ноя 2024',
+    readTime: '15 мин',
+    category: 'Обществознание',
+    image: 'https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&q=80',
+    link: '/theater-cinema'
+  },
+  {
+    id: 2,
     title: '10 трендов в веб-разработке 2024',
     excerpt: 'Узнайте, какие технологии будут определять будущее веб-разработки в этом году',
     date: '15 янв 2024',
@@ -98,22 +108,13 @@ const blogPosts = [
     image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80'
   },
   {
-    id: 2,
+    id: 3,
     title: 'Как выбрать первый IT-курс',
     excerpt: 'Практические советы для тех, кто только начинает свой путь в IT',
     date: '12 янв 2024',
     readTime: '7 мин',
     category: 'Карьера',
     image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80'
-  },
-  {
-    id: 3,
-    title: 'Секреты эффективного обучения',
-    excerpt: 'Научные методики, которые помогут вам учиться быстрее и запоминать больше',
-    date: '10 янв 2024',
-    readTime: '6 мин',
-    category: 'Обучение',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&q=80'
   }
 ];
 
@@ -293,36 +294,41 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {blogPosts.map((post, index) => (
-              <Card 
-                key={post.id} 
-                className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden animate-fade-in cursor-pointer"
-                style={{ animationDelay: `${index * 100}ms` }}
+              <a 
+                key={post.id}
+                href={post.link || '#'}
+                className="block"
               >
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={post.image} 
-                    alt={post.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <Badge className="absolute top-4 left-4 bg-white/90">{post.category}</Badge>
-                </div>
-                <CardHeader>
-                  <CardTitle className="group-hover:text-primary transition-colors text-xl">
-                    {post.title}
-                  </CardTitle>
-                  <CardDescription className="line-clamp-2">{post.excerpt}</CardDescription>
-                </CardHeader>
-                <CardFooter className="flex items-center justify-between text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Icon name="Calendar" size={14} />
-                    <span>{post.date}</span>
+                <Card 
+                  className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden animate-fade-in cursor-pointer h-full"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="relative overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+                    />
+                    <Badge className="absolute top-4 left-4 bg-white/90">{post.category}</Badge>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Icon name="Clock" size={14} />
-                    <span>{post.readTime}</span>
-                  </div>
-                </CardFooter>
-              </Card>
+                  <CardHeader>
+                    <CardTitle className="group-hover:text-primary transition-colors text-xl">
+                      {post.title}
+                    </CardTitle>
+                    <CardDescription className="line-clamp-2">{post.excerpt}</CardDescription>
+                  </CardHeader>
+                  <CardFooter className="flex items-center justify-between text-sm text-muted-foreground">
+                    <div className="flex items-center gap-2">
+                      <Icon name="Calendar" size={14} />
+                      <span>{post.date}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Icon name="Clock" size={14} />
+                      <span>{post.readTime}</span>
+                    </div>
+                  </CardFooter>
+                </Card>
+              </a>
             ))}
           </div>
 
